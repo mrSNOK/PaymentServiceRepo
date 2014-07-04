@@ -46,7 +46,7 @@ PaymentService
 
 **Серверная часть**
 
-Многослойная web-based система с использованием IOC. Фреймворки: Spring(MVC, Web, Data, Security), Hibernate(ORM, Validation). Тестирование :Spring test(Mock-MVC), Mockito, Junit. Пул соединений c3p0. Контейнер сервлетов :Tomcat 7.
+Многослойная web-based система с использованием IOC. Фреймворки: Spring(MVC, Web, Data, Security), Hibernate(ORM, Validation). Тестирование :Spring test(Mock-MVC), Mockito, Junit. Пул соединений c3p0. Контейнер сервлетов :Tomcat 7. Многоуровневая система логирования : Log4j.
 
 **Клиентская часть**
 
