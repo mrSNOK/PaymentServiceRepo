@@ -1,0 +1,38 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+
+<context:annotation-config />
+<context:component-scan base-package="com.my.payment.service" />
+<!-- configuring filter chain -->
+<http access-denied-page="/error403" use-expressions="true" >
+	<intercept-url pattern="/" access="hasRole('ROLE_GUEST')" />
+	<intercept-url pattern="/register" access="hasRole('ROLE_GUEST')" />
+	<intercept-url pattern="/balance" access="hasRole('ROLE_USER')" />
+	<intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" />
+	<intercept-url pattern="/operations/**" access="hasRole('ROLE_ADMIN')" />
+	<form-login login-page="/" 
+		authentication-success-handler-ref="PaymentAuthenticationSuccessHandler" 
+		authentication-failure-url="/?error=true" />
+	<logout logout-url="/logout" logout-success-url="/"
+		invalidate-session = "true"/>
+	<anonymous username="guest" granted-authority="ROLE_GUEST" />
+	<remember-me />
+	</http>
+<!-- custom success authentication handler for redirection users and admins after login -->
+	<beans:bean id="PaymentAuthenticationSuccessHandler"
+        class="com.my.payment.services.PaymentAuthenticationSuccessHandlerService" />
+<!-- custom user details service with DB datafeed-->
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="paymentUserDetailsService">
+			<password-encoder hash="plaintext">  
+        	</password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>
