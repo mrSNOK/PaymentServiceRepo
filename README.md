@@ -46,6 +46,7 @@ Technologies
 **Backend**
 
 Backend is represented by a multilayered web-based system using IOC. Frameworks are represented by Spring(MVC, Web, Data, Security), Hibernate(ORM, Validation). Testing :Spring test(Mock-MVC), Mockito, Junit. Connection pool: c3p0. Servlet  container is represented by Tomcat 7. Multileveled logging is represented by Log4j.
+
 **Frontend**
 
 HTML/CSS, Javascript(Jquery)
