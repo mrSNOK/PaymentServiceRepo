@@ -40,6 +40,7 @@ Account replenishment system. Users register and receive an account in the syste
 	*	Pagination is available
 	*	A feature to choose a quantity of operations per page is available
 	*	A feature to search by the date of replenishment (you can set the start and/or end dates)is available
+
 Technologies
 ----------
 
